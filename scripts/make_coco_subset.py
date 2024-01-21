@@ -8,6 +8,7 @@ import yaml
 # This is because the coco classes have weird numbering
 convertor = {
     1: {"new_idx": 0, "name": "ceres"},
+    2: {"new_idx": 1, "name": "Oddset"},
 
 }
 
