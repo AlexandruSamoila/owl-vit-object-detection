@@ -1,6 +1,6 @@
 data:
   images_path: "../logo-detection-1/train"
-  annotations_file: "../logo-detection-1/train/_annotations.json"
+  annotations_file: "../logo-detection-1/train/_annotations.coco.json"
   num_train_images: 50 # Keep high enough to ensure that at least one of each label is seen in training. 2500 is a good minimum
   num_test_images: 10
 
