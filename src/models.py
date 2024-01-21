@@ -47,7 +47,7 @@ class OwlViT(torch.nn.Module):
 
     def __init__(self, pretrained_model, query_bank):
         super().__init__()
-
+        self.pretrained_model = pretrained_model
         # Take the pretrained components that are useful to us
         self.backbone = pretrained_model.owlvit.vision_model
         self.post_post_layernorm = pretrained_model.layer_norm

@@ -76,7 +76,7 @@ if __name__ == "__main__":
             # Prep inputs
             image = image.to(device)
             labels = labels.to(device)
-            boxes = coco_to_model_input(boxes, metadata).to(device)
+            boxes = coco_to_model_input(boxes.float(), metadata).to(device)
 
             # Predict
             all_pred_boxes, pred_classes, pred_sims, _ = model(image)
@@ -104,7 +104,7 @@ if __name__ == "__main__":
                 # Prep inputs
                 image = image.to(device)
                 labels = labels.to(device)
-                boxes = coco_to_model_input(boxes, metadata).to(device)
+                boxes = coco_to_model_input(boxes.float(), metadata).to(device)
 
                 # Get predictions and save output
                 pred_boxes, pred_classes, pred_class_sims, _ = model(image)
@@ -139,7 +139,7 @@ if __name__ == "__main__":
                     )
 
                     write_png(image_with_boxes, f"debug/{epoch}/{i}.jpg")
-
+        model.pretrained_model.save_pretrained("data")
         print("Computing metrics...")
         val_metrics = metric.compute()
         for i, p in enumerate(val_metrics["map_per_class"].tolist()):
