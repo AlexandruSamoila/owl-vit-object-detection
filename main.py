@@ -142,9 +142,9 @@ if __name__ == "__main__":
         model.pretrained_model.save_pretrained("data")
         print("Computing metrics...")
         val_metrics = metric.compute()
-        for i, p in enumerate(val_metrics["map_per_class"].tolist()):
-            label = labelmap[str(i)]
-            classMAPs[label].append(p)
+        #for i, p in enumerate(val_metrics["map_per_class"].tolist()):
+        label = labelmap[val_metrics["map_per_class"].tolist()]
+        classMAPs[label].append(0)
 
         with open("class_maps.json", "w") as f:
             json.dump(classMAPs, f)
